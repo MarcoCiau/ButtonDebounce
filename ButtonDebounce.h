@@ -9,8 +9,10 @@ class ButtonDebounce
 private:
     int buttonPin;
     unsigned long firstPressedTime;
+    unsigned long skipPressedTimer;
     bool initialState;
     bool buttonStatus;
+    bool skipEvent;
     bool lastState;
 
 public:
@@ -19,7 +21,7 @@ public:
     void loop();
     bool isPressed();
     bool isReleased();
-
+    bool isSkipEvent();
 };
 
 
