@@ -33,8 +33,9 @@ void ButtonDebounce::loop()
       buttonStatus = true;  
       lastState = true;
     }  
-    if ((millis() - skipPressedTimer) >= 600 && lastState && !skipEvent)
+    if ((millis() - skipPressedTimer) >= 300 && lastState && !skipEvent)
     {
+      skipPressedTimer = millis();
       skipEvent = true;
     }  
   }
@@ -58,6 +59,6 @@ bool ButtonDebounce::isReleased()
 bool ButtonDebounce::isSkipEvent()
 {
   bool status = skipEvent;
-  buttonStatus = 0;
+  skipEvent = 0;
   return status;
 }
